@@ -1,1 +1,19 @@
+# NodeJS modules folder
 node_modules
+
+# npm debug log
+npm-debug.log
+
+# vs code
+.vscode
+
+# coverage
+
+/coverage
+/_build
+.env
+dist
+.DS_Store
+*/.DS_Store
+yarn-error.log
+*.csv
