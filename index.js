@@ -2,14 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const axios = require("axios");
 
-const router = express.Router();
-
 const app = express();
 const URL = "https://api.livecoin.net/exchange/trades";
+const productsRouter = require("./products")
 
 app.use(bodyParser.json());
-
-let products = ["apple", "pina", "juice", "platan", "mellon"];
+app.use("/products", productsRouter);
 
 app.get("/", (req, res, next) => {
   res.send("Its working on 192.168.1.76:8087");
@@ -20,11 +18,9 @@ app.get('/ticker/:ticker', async (req, res) => {
     "https://api.livecoin.net/exchange/ticker"
   );
   const upperTicker = `${req.params.ticker}`.toUpperCase()
-  res.json(tickerVar.filter(it => it.cur === upperTicker))
-})
-
-app.get("/products", (req, res) => {
-  res.send(products);
+  res.header("Content-Type", "application/json");
+  res.write(JSON.stringify(tickerVar.filter(it => it.symbol === `${upperTicker}/BTC`), 1, 2))
+  res.end()
 })
 
 app.get("/planets", async (req, res) => {
@@ -65,16 +61,6 @@ app.get("/planets/:number", async (req, res) => {
   res.header('Content-Type', 'application/json');
   res.write(JSON.stringify(planet, 1, 2));
   res.end()
-});
-
-app.get("/products/:id", (req, res) => {
-  res.send(products[req.params.id]);
-});
-
-app.post("/products", (req, res, next) => {
-  const newItem = req.body;
-  products = [...products, newItem.item];
-  return res.send(products);
 });
 
 app.listen(8087, () => {
