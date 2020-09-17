@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use("/products", productsRouter);
 
 app.get("/", (req, res, next) => {
-  res.send(`Its working on port ${PORT}!`);
+  res.end(`<div>Its working on port ${PORT}!</div>`);
 });
 
 app.get('/ticker/:ticker', async (req, res) => {
