@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 
 const app = express();
+const PORT = process.env.PORT || 8087
 const URL = "https://api.livecoin.net/exchange/trades";
 const productsRouter = require("./products")
 
@@ -63,6 +64,6 @@ app.get("/planets/:number", async (req, res) => {
   res.end()
 });
 
-app.listen(8087, () => {
+app.listen(PORT, () => {
   console.log("Its started", new Date());
 })
