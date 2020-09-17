@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 
 const app = express();
-const PORT = process.env.PORT || 8087
+const PORT = process.env.PORT || 443
 const URL = "https://api.livecoin.net/exchange/trades";
 const productsRouter = require("./products")
 
