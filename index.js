@@ -64,6 +64,6 @@ app.get("/planets/:number", async (req, res) => {
   res.end()
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log("Its started", new Date());
 })
