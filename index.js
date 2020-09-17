@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use("/products", productsRouter);
 
 app.get("/", (req, res, next) => {
-  res.send("Its working on 192.168.1.76:8087");
+  res.send(`Its working on port ${PORT}!`);
 });
 
 app.get('/ticker/:ticker', async (req, res) => {
