@@ -6,7 +6,6 @@ const productsRouter = express.Router();
 productsRouter.use(bodyParser.json());
 
 let products = []
-// = ["apple", "pina", "juice", "platan", "mellon"];
 
 productsRouter.get("/", (req, res) => {
   if (products) {

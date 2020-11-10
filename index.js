@@ -65,5 +65,5 @@ app.get("/planets/:number", async (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log("Its started", new Date());
+  console.log(`Server started on port ${PORT}`, new Date());
 })
